@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI IMAGE GENERATOR</title>
+    <!-- Font Awesome CDN removed to avoid tracking warnings -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* tiny helpers so inline SVGs match the original icon look */
+      .icon {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+        display: inline-block;
+        fill: currentColor; /* lets icon inherit text color */
+      }
+      .logo .icon { width: 1.4em; height: 1.4em; }
+      .theme-toggle, .prompt-btn, .generate-btn, .img-download-btn {
+        font-size: 1rem; /* keep button text sizing consistent */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo-wrapper">
+          <div class="logo">
+            <!-- wand-magic-sparkles icon (inline SVG) -->
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 3l1.5 4.5L11 9l-4.5 1.5L5 15 3 10.5 0 9l3-1.5L5 3zM19 7l1 1 1 1 1 0-1 1-1 1-1 1-1-1-1-1-1-1 1-1 1-1 1-1 1 0zM9.5 12.5l6 6 2-2-6-6-2 2z"></path>
+            </svg>
+          </div>
+          <h1>AI IMAGE GENERATOR</h1>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <!-- moon icon -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+        </button>
+      </header>
+
+      <div class="main-content">
+        <form action="#" class="prompt-form">
+          <div class="prompt-container">
+            <textarea
+              class="prompt-input"
+              placeholder="Describe your imagination in detail..."
+              required
+              autofocus
+            ></textarea>
+            <button type="button" class="prompt-btn" aria-label="Random prompt">
+              <!-- dice icon -->
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 10h8v-8h-8v8z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="prompt-actions">
+            <div class="select-wrapper">
+              <select class="custom-select" id="model-select" required>
+                <option value="" selected disabled>Select Model</option>
+                <option value="black-forest-labs/FLUX.1-dev">FLUX.1-DEV</option>
+                <option value="black-forest-labs/FLUX.1-schnell">FLUX.1-schnell</option>
+                <option value="stabilityai/stable-diffusion-xl-base-1">Stable Diffusion XL</option>
+                <option value="runwayml/stable-diffusion-xl-base-1.0">Stable Diffusion v1.5</option>
+                <option value="promptthero/Openjourney">Openjourney</option>
+              </select>
+            </div>
+
+            <div class="select-wrapper">
+              <select class="custom-select" id="count-select" required>
+                <option value="" selected disabled>Image Count</option>
+                <option value="1">1 Image</option>
+                <option value="2">2 Image</option>
+                <option value="3">3 Image</option>
+                <option value="4">4 Image</option>
+              </select>
+            </div>
+
+            <div class="select-wrapper">
+              <select class="custom-select" id="ratio-select" required>
+                <option value="" selected disabled>Aspect Ratio</option>
+                <option value="1/1">Square (1:1)</option>
+                <option value="16/9">Landscape (16:9)</option>
+                <option value="9/16">Portrait (9:16)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="generate-btn">
+              <!-- wand-sparkles icon -->
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2 21l2-5 5-2-5-2L2 7 0 12l2 9zM19 4l1 1 1 1 1 0-1 1-1 1-1 1-1-1-1-1 1-1 1-1 1 0z"></path>
+              </svg>
+              Generate
+            </button>
+          </div>
+
+          <div class="gallery-grid">
+            <!-- generated images will appear here -->
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
